@@ -1,0 +1,19 @@
+.app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+
+  &--light-mode {
+    @extend .app;
+    background-color: var(--app-background-color-light-mode);
+  }
+
+  &--dark-mode {
+    @extend .app;
+    background-color: var(--app-background-color-dark-mode);
+  }
+}

@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  font-size: 10px;
+  --app-background-color-light-mode: #f6f8fe;
+  --app-background-color-dark-mode: #131d2f;
+
+  --mode-switcher-font-color: #6b7b92;
+
+  --main-font-color-light-mode: black;
+  --main-font-color-dark-mode: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  font-family: "Space Mono", Poppins, sans-serif;
+}

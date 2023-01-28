@@ -1,4 +1,4 @@
-import { ThemeModeContextType } from "../../Root";
+import { ThemeModeContextType } from "../../types/themeMode";
 
 import IconToTurnLightMode from "./assets/icon-light-mode.svg";
 import IconToTurnDarkMode from "./assets/icon-dark-mode.svg";
@@ -9,6 +9,8 @@ const altTextForDarkMode =
 const altTextForLightMode =
   "Icon of moon by pressing on which you can turn application to dark mode.";
 
+// ------ HOOK: START ------ //
+
 export function useReturnThemeModeRelatedInfo(context: ThemeModeContextType) {
   let themeModeLabel: "Light" | "Dark";
   let themeModeIconSource: string;
@@ -16,29 +18,24 @@ export function useReturnThemeModeRelatedInfo(context: ThemeModeContextType) {
   let appNameClass: string;
 
   if (typeof context === "string") {
-    themeModeLabel = "Light";
+    themeModeLabel = "Dark";
     themeModeIconSource = IconToTurnDarkMode;
     themeModeAltText = altTextForLightMode;
-    appNameClass = "header__app-name--light-mode";
   } else {
-    themeModeLabel = context.themeMode === "light" ? "Light" : "Dark";
+    themeModeLabel = context.themeMode === "light" ? "Dark" : "Light";
 
     themeModeIconSource =
       context.themeMode === "light" ? IconToTurnDarkMode : IconToTurnLightMode;
 
     themeModeAltText =
       context.themeMode === "light" ? altTextForLightMode : altTextForDarkMode;
-
-    appNameClass =
-      context.themeMode === "light"
-        ? "header__app-name--light-mode"
-        : "header__app-name--dark-mode";
   }
 
   return {
     themeModeLabel,
     themeModeIconSource,
     themeModeAltText,
-    appNameClass,
   };
 }
+
+// ------ HOOK: END ------ //

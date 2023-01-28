@@ -1,21 +1,22 @@
 import "./Header.scss";
 
-import { ThemeModeContext } from "../../Root";
+import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
 
-import { useContext } from "react";
+import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 import { useReturnThemeModeRelatedInfo } from "./helpers";
 
 // ------ COMPONENT: START ------ //
 
 export default function Header() {
-  const themeModeContext = useContext(ThemeModeContext);
+  const themeModeContext = useThemeModeContext();
 
-  const {
-    themeModeLabel,
-    themeModeIconSource,
-    themeModeAltText,
-    appNameClass,
-  } = useReturnThemeModeRelatedInfo(themeModeContext);
+  const platformNameClass = getClassBasedOnThemeModeContext(
+    themeModeContext,
+    "header__platform-name"
+  );
+
+  const { themeModeLabel, themeModeIconSource, themeModeAltText } =
+    useReturnThemeModeRelatedInfo(themeModeContext);
 
   function handleModeIconClick() {
     if (typeof themeModeContext === "string") {
@@ -29,7 +30,7 @@ export default function Header() {
 
   return (
     <header className="header">
-      <h1 className={appNameClass}>devfinder</h1>
+      <h1 className={platformNameClass}>devfinder</h1>
       <span className="header__mode-switcher">
         <p className="header__mode-switcher__mode-label">{themeModeLabel}</p>
         <img

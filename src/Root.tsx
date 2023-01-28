@@ -2,6 +2,8 @@ import App from "./App";
 
 import { useReducer, createContext } from "react";
 
+import { ThemeModeContextType } from "./types/themeMode";
+
 // Context and Reducer setup
 
 function reducer(
@@ -10,13 +12,6 @@ function reducer(
 ) {
   return action.payload;
 }
-
-export type ThemeModeContextType =
-  | string
-  | {
-      themeMode: string;
-      dispatchThemeMode: (value: { payload: "light" | "dark" }) => void;
-    };
 
 export const ThemeModeContext = createContext<ThemeModeContextType>("light");
 

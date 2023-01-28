@@ -8,27 +8,27 @@
   padding: 1rem;
   // background-color: aqua;
 
-  &__app-name {
+  &__platform-name {
     font-size: 4rem;
 
     &--light-mode {
-      @extend .header__app-name;
+      @extend .header__platform-name;
       color: var(--main-font-color-light-mode);
     }
 
     &--dark-mode {
-      @extend .header__app-name;
+      @extend .header__platform-name;
       color: var(--main-font-color-dark-mode);
     }
   }
 
   &__mode-switcher {
+    height: 100%;
+    width: 17%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    width: 17%;
-    height: 100%;
     // background-color: red;
 
     &__mode-label {
@@ -39,6 +39,10 @@
     &__switch-button {
       height: 45%;
       cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }

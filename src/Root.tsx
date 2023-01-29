@@ -1,4 +1,4 @@
-import App from "./App";
+import App from "./components/App/App";
 
 import { useReducer, createContext } from "react";
 

@@ -1,28 +1,35 @@
 import "./Searchbar.scss";
 
-import { LocalGithubUser } from "../../types/user";
-
 import SearchIcon from "./assets/icon-search.svg";
 
-import { fetchGithubUserBySearchQuery } from "./helpers";
 import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
 
 import { useState } from "react";
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
+import { SearchButtonClickHandler } from "../../types/SearchButtonClickHandler";
+
 const altTextForSearchbar =
   "Magnifying glass icon that is commonly used to point out the searching functionality of some field.";
 
+// ------ Types ------ //
+
+interface SearchbarProps {
+  handleSearchButtonClick: SearchButtonClickHandler;
+}
+
 //------ COMPONENT: START ------ //
 
-export default function Searchbar() {
+export default function Searchbar(props: SearchbarProps) {
+  const themeModeContext = useThemeModeContext();
+
   const [searchQuery, setSearchQuery] = useState("");
 
-  const [searchResult, setSearchResult] = useState<
-    null | "no result" | LocalGithubUser
-  >(null);
-
-  const themeModeContext = useThemeModeContext();
+  const handleSearchFieldChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    setSearchQuery(event.target.value);
+  };
 
   const searchbarClass = getClassBasedOnThemeModeContext(
     themeModeContext,
@@ -33,16 +40,6 @@ export default function Searchbar() {
     themeModeContext,
     "searchbar__search-field"
   );
-
-  const handleSearchFieldChange: React.ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
-    setSearchQuery(event.target.value);
-  };
-
-  function handleSearchButtonClick() {
-    fetchGithubUserBySearchQuery(searchQuery, setSearchResult, setSearchQuery);
-  }
 
   return (
     <section className={searchbarClass}>
@@ -60,7 +57,11 @@ export default function Searchbar() {
       />
       <button
         className="searchbar__search-button"
-        onClick={handleSearchButtonClick}
+        onClick={props.handleSearchButtonClick.bind(
+          null,
+          searchQuery,
+          setSearchQuery
+        )}
       >
         Search
       </button>

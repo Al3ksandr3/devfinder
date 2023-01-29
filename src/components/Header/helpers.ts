@@ -15,7 +15,6 @@ export function useReturnThemeModeRelatedInfo(context: ThemeModeContextType) {
   let themeModeLabel: "Light" | "Dark";
   let themeModeIconSource: string;
   let themeModeAltText: string;
-  let appNameClass: string;
 
   if (typeof context === "string") {
     themeModeLabel = "Dark";

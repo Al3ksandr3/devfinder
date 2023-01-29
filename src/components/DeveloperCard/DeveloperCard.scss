@@ -1,0 +1,26 @@
+.developer-card {
+  height: 70%;
+  width: 45%;
+  border-radius: 10px;
+  margin-top: 3rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  &--light-mode {
+    @extend .developer-card;
+    background-color: var(--building-blocks-background-color-light-mode);
+    box-shadow: var(--box-shadow-light-mode);
+  }
+
+  &--dark-mode {
+    @extend .developer-card;
+    background-color: var(--building-blocks-background-color-dark-mode);
+  }
+
+  &__avatar {
+    width: 20%;
+  }
+}

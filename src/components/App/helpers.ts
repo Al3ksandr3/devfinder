@@ -2,7 +2,15 @@ import { User, GithubError, LocalGithubUser } from "../../types/user";
 
 export async function fetchGithubUserBySearchQuery(
   searchQuery: string,
-  searchResultStateSetter: (newState: "no result" | LocalGithubUser) => void,
+  searchResultStateSetter: (
+    newState:
+      | "no result"
+      | LocalGithubUser
+      | null
+      | ((
+          prevState: "no result" | LocalGithubUser | null
+        ) => "no result" | LocalGithubUser | null)
+  ) => void,
   searchQueryStateSetter: (
     value: string | ((prevValue: string) => string)
   ) => void

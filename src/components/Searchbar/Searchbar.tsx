@@ -1,9 +1,13 @@
 import "./Searchbar.scss";
 
+import { LocalGithubUser } from "../../types/user";
+
 import SearchIcon from "./assets/icon-search.svg";
 
+import { fetchGithubUserBySearchQuery } from "./helpers";
 import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
 
+import { useState } from "react";
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
 const altTextForSearchbar =
@@ -12,6 +16,12 @@ const altTextForSearchbar =
 //------ COMPONENT: START ------ //
 
 export default function Searchbar() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const [searchResult, setSearchResult] = useState<
+    null | "no result" | LocalGithubUser
+  >(null);
+
   const themeModeContext = useThemeModeContext();
 
   const searchbarClass = getClassBasedOnThemeModeContext(
@@ -24,6 +34,16 @@ export default function Searchbar() {
     "searchbar__search-field"
   );
 
+  const handleSearchFieldChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    setSearchQuery(event.target.value);
+  };
+
+  function handleSearchButtonClick() {
+    fetchGithubUserBySearchQuery(searchQuery, setSearchResult, setSearchQuery);
+  }
+
   return (
     <section className={searchbarClass}>
       <img
@@ -33,10 +53,17 @@ export default function Searchbar() {
       />
       <input
         type="text"
+        onChange={handleSearchFieldChange}
+        value={searchQuery}
         className={searchFieldClass}
         placeholder="Search GitHub username..."
       />
-      <button className="searchbar__search-button">Search</button>
+      <button
+        className="searchbar__search-button"
+        onClick={handleSearchButtonClick}
+      >
+        Search
+      </button>
     </section>
   );
 }

@@ -1,6 +1,6 @@
-export type ThemeModeContextType =
+export type ThemeModeContext =
   | string
   | {
-      themeMode: string;
+      themeMode: "light" | "dark";
       dispatchThemeMode: (value: { payload: "light" | "dark" }) => void;
     };

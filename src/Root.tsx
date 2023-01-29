@@ -2,7 +2,7 @@ import App from "./components/App/App";
 
 import { useReducer, createContext } from "react";
 
-import { ThemeModeContextType } from "./types/themeMode";
+import { ThemeModeContext } from "./types/ThemeModeContext";
 
 // Context and Reducer setup
 
@@ -13,7 +13,7 @@ function reducer(
   return action.payload;
 }
 
-export const ThemeModeContext = createContext<ThemeModeContextType>("light");
+export const ThemeMode = createContext<ThemeModeContext>("light");
 
 // ------ COMPONENT: START ------ //
 
@@ -21,9 +21,9 @@ export default function Root() {
   const [themeMode, dispatchThemeMode] = useReducer(reducer, "light");
 
   return (
-    <ThemeModeContext.Provider value={{ themeMode, dispatchThemeMode }}>
+    <ThemeMode.Provider value={{ themeMode, dispatchThemeMode }}>
       <App />
-    </ThemeModeContext.Provider>
+    </ThemeMode.Provider>
   );
 }
 

@@ -1,12 +1,12 @@
-import { ThemeModeContext } from "../Root";
-import { ThemeModeContextType } from "../types/themeMode";
+import { ThemeMode } from "../Root";
+import { ThemeModeContext } from "../types/ThemeModeContext";
 
 import { useContext } from "react";
 
 // ------ HOOK: START ------ //
 
-export function useThemeModeContext(): ThemeModeContextType {
-  return useContext(ThemeModeContext);
+export function useThemeModeContext(): ThemeModeContext {
+  return useContext(ThemeMode);
 }
 
 // ------ HOOK: END ------ //

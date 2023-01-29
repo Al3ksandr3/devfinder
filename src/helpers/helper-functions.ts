@@ -1,7 +1,7 @@
-import { ThemeModeContextType } from "../types/themeMode";
+import { ThemeModeContext } from "../types/ThemeModeContext";
 
 export function getClassBasedOnThemeModeContext(
-  themeModeContext: ThemeModeContextType,
+  themeModeContext: ThemeModeContext,
   baseForClassName: string
 ): string {
   let CSSClassBasedOnMode: string;
@@ -16,4 +16,25 @@ export function getClassBasedOnThemeModeContext(
   }
 
   return CSSClassBasedOnMode;
+}
+
+////////////////////////////////////////////////////////
+
+export function getIconBasedOnThemeModeContext(
+  themeModeContext: ThemeModeContext,
+  iconForLightMode: string,
+  iconForDarkMode: string
+): string {
+  let iconBasedOnMode: string;
+
+  if (typeof themeModeContext === "string") {
+    iconBasedOnMode = iconForLightMode;
+  } else {
+    iconBasedOnMode =
+      themeModeContext.themeMode === "light"
+        ? iconForLightMode
+        : iconForDarkMode;
+  }
+
+  return iconBasedOnMode;
 }

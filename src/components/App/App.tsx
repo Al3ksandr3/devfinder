@@ -12,15 +12,14 @@ import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
 import { SearchButtonClickHandler } from "../../types/SearchButtonClickHandler";
 import { LocalGithubUser } from "../../types/user";
+import { SearchResult } from "../../types/SearchResult";
 
 // ------ COMPONENT: START ------ //
 
 export default function App() {
   const themeModeContext = useThemeModeContext();
 
-  const [searchResult, setSearchResult] = useState<
-    null | "no result" | LocalGithubUser
-  >(null);
+  const [searchResult, setSearchResult] = useState<SearchResult>("startup");
 
   const handleSearchButtonClick: SearchButtonClickHandler = (
     searchQuery,
@@ -35,7 +34,14 @@ export default function App() {
     <div className={appClass}>
       <Header />
       <Searchbar handleSearchButtonClick={handleSearchButtonClick} />
-      {/* <DeveloperCard /> */}
+
+      {searchResult === "startup" && <DeveloperCard searchStatus={"startup"} />}
+
+      {searchResult === "empty" && <DeveloperCard searchStatus={"empty"} />}
+
+      {typeof searchResult === "object" && (
+        <DeveloperCard searchStatus={"match"} githubUserInfo={searchResult} />
+      )}
     </div>
   );
 }

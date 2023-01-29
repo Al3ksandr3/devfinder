@@ -1,15 +1,10 @@
 import { User, GithubError, LocalGithubUser } from "../../types/user";
+import { SearchResult } from "../../types/SearchResult";
 
 export async function fetchGithubUserBySearchQuery(
   searchQuery: string,
   searchResultStateSetter: (
-    newState:
-      | "no result"
-      | LocalGithubUser
-      | null
-      | ((
-          prevState: "no result" | LocalGithubUser | null
-        ) => "no result" | LocalGithubUser | null)
+    newState: SearchResult | ((prevState: SearchResult) => SearchResult)
   ) => void,
   searchQueryStateSetter: (
     value: string | ((prevValue: string) => string)
@@ -41,9 +36,9 @@ export async function fetchGithubUserBySearchQuery(
 
       searchResultStateSetter(remapedUserData);
     } else {
-      searchResultStateSetter("no result");
+      searchResultStateSetter("empty");
     }
   } catch (error) {
-    searchResultStateSetter("no result");
+    searchResultStateSetter("empty");
   }
 }

@@ -4,7 +4,7 @@ import SearchIcon from "./assets/icon-search.svg";
 
 import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
 import { SearchButtonClickHandler } from "../../types/SearchButtonClickHandler";
@@ -22,6 +22,8 @@ interface SearchbarProps {
 
 export default function Searchbar(props: SearchbarProps) {
   const themeModeContext = useThemeModeContext();
+
+  const inputElementRef = useRef<null | HTMLInputElement>(null);
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -41,8 +43,22 @@ export default function Searchbar(props: SearchbarProps) {
     "searchbar__search-field"
   );
 
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = function (
+    submitE
+  ) {
+    submitE.preventDefault();
+
+    if (searchQuery.trim() === "") {
+      setSearchQuery("");
+
+      return inputElementRef.current ? inputElementRef.current.focus() : null;
+    }
+
+    props.handleSearchButtonClick(searchQuery.trim(), setSearchQuery);
+  };
+
   return (
-    <section className={searchbarClass}>
+    <form className={searchbarClass} onSubmit={handleSubmit}>
       <img
         className="searchbar__icon"
         src={SearchIcon}
@@ -50,22 +66,14 @@ export default function Searchbar(props: SearchbarProps) {
       />
       <input
         type="text"
+        ref={inputElementRef}
         onChange={handleSearchFieldChange}
         value={searchQuery}
         className={searchFieldClass}
         placeholder="Search GitHub username..."
       />
-      <button
-        className="searchbar__search-button"
-        onClick={props.handleSearchButtonClick.bind(
-          null,
-          searchQuery,
-          setSearchQuery
-        )}
-      >
-        Search
-      </button>
-    </section>
+      <button className="searchbar__search-button">Search</button>
+    </form>
   );
 }
 

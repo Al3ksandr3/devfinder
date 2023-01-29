@@ -7,6 +7,7 @@ import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions"
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
 import { LocalGithubUser } from "../../types/user";
+import EmptySearchResult from "../EmptySearchResult/EmptySearchResult";
 
 // ------ Types ------ //
 
@@ -33,9 +34,7 @@ export default function DeveloperCard(props: DeveloperCardProps) {
 
       {/* CASE II - display empty search result message...  */}
 
-      {props.searchStatus === "empty" && (
-        <p className="developer-card__empty-result"></p>
-      )}
+      {props.searchStatus === "empty" && <EmptySearchResult />}
 
       {/* CASE III - display search result...  */}
 

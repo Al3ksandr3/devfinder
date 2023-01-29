@@ -34,7 +34,7 @@ export default function StartupMessage() {
         alt="GitHub logo."
       />
       <p className={messageTextClass}>
-        Input GitHub user name in the fild above and press "Saarch" button to
+        Input GitHub user name in the field above and press "Search" button to
         proceed...
       </p>
     </span>

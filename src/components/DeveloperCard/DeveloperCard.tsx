@@ -6,7 +6,7 @@ import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions"
 
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
-import { LocalGithubUser } from "../../types/user";
+import { LocalGithubUser } from "../../types/GithubAPI";
 import EmptySearchResult from "../EmptySearchResult/EmptySearchResult";
 
 // ------ Types ------ //

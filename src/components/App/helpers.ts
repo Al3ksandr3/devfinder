@@ -1,4 +1,4 @@
-import { User, GithubError, LocalGithubUser } from "../../types/user";
+import { User, GithubError, LocalGithubUser } from "../../types/GithubAPI";
 import { SearchResult } from "../../types/SearchResult";
 
 export async function fetchGithubUserBySearchQuery(

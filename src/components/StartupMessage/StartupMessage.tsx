@@ -1,7 +1,7 @@
 import "./StartupMessage.scss";
 
-import githubIconForLightMode from "./assets/icon-github--light-mode.svg";
-import githubIconForDarkMode from "./assets/icon-github--dark-mode.svg";
+import githubIconForLightMode from "./assets/github-icon--light-mode.svg";
+import githubIconForDarkMode from "./assets/github-icon--dark-mode.svg";
 
 import {
   getIconBasedOnThemeModeContext,

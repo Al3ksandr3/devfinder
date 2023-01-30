@@ -11,7 +11,6 @@ import { useState } from "react";
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
 import { SearchButtonClickHandler } from "../../types/SearchButtonClickHandler";
-import { LocalGithubUser } from "../../types/user";
 import { SearchResult } from "../../types/SearchResult";
 
 // ------ COMPONENT: START ------ //

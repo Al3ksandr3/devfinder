@@ -4,12 +4,7 @@ import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions"
 
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
-import { LocalGithubUser } from "../../types/GithubAPI";
-
-// ------ Types ------ //
-
-interface DeveloperGeneralInfoProps
-  extends Pick<LocalGithubUser, "login" | "created" | "bio" | "name"> {}
+import { DeveloperGeneralInfoProps } from "../../types/componentProps";
 
 //------ COMPONENT: START ------ //
 
@@ -22,9 +17,9 @@ const transformDateTime = new Intl.DateTimeFormat("en-UK", {
 export default function DeveloperGeneralInfo(props: DeveloperGeneralInfoProps) {
   const themeModeContext = useThemeModeContext();
 
-  const developerName: string = props.name ?? "Unknown name";
+  const developerName: string = props.name || "Unknown name";
 
-  const developerBio: string = props.bio ?? "This profile has no bio...";
+  const developerBio: string = props.bio || "This profile has no bio...";
 
   const accountCreationDateTime = transformDateTime.format(
     new Date(props.created)

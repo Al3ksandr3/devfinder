@@ -1,7 +1,7 @@
 import "./EmptySearchResult.scss";
 
-import noResultIconForLightMode from "./assets/icon-no-result--light-mode.svg";
-import noResultIconForDarkMode from "./assets/icon-no-result--dark-mode.svg";
+import noResultIconForLightMode from "./assets/no-result-icon--light-mode.svg";
+import noResultIconForDarkMode from "./assets/no-result-icon--dark-mode.svg";
 
 import {
   getIconBasedOnThemeModeContext,

@@ -7,17 +7,14 @@ import DeveloperStatsItem from "../DeveloperStatsItem/DeveloperStatsItem";
 import DeveloperContactInfoItem from "../DeveloperContactInfoItem/DeveloperContactInfoItem";
 
 import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
+import { getDeveloperContactInfoItems } from "./helpers";
 
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
-import { LocalGithubUser } from "../../types/GithubAPI";
-
-// ------ Types ------ //
-
-interface DeveloperCardProps {
-  searchStatus: "startup" | "empty" | "match";
-  githubUserInfo?: LocalGithubUser;
-}
+import {
+  DeveloperCardProps,
+  DeveloperContactInfoItemProps,
+} from "../../types/componentProps";
 
 //------ COMPONENT: START ------ //
 
@@ -28,6 +25,9 @@ export default function DeveloperCard(props: DeveloperCardProps) {
     themeModeContext,
     "developer-card"
   );
+
+  let developerContactInfoItems: DeveloperContactInfoItemProps[] =
+    getDeveloperContactInfoItems(props.githubUserInfo);
 
   return (
     <section className={developerCardClass}>
@@ -56,6 +56,17 @@ export default function DeveloperCard(props: DeveloperCardProps) {
                 name={props.githubUserInfo.name}
                 created={props.githubUserInfo.created}
               />
+              <span className="developer-card__developer-info__info-container__contacts">
+                {developerContactInfoItems.map((contactInfoItem) => {
+                  return (
+                    <DeveloperContactInfoItem
+                      itemContent={contactInfoItem.itemContent}
+                      isLink={contactInfoItem.isLink}
+                      itemIconUrl={contactInfoItem.itemIconUrl}
+                    />
+                  );
+                })}
+              </span>
             </article>
           </section>
         )}

@@ -6,7 +6,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  // background-color: aqua;
 
   &__platform-name {
     font-size: 4rem;
@@ -29,11 +28,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    // background-color: red;
 
     &__mode-label {
       font-size: 2rem;
-      color: var(--grey-color);
+
+      &--light-mode {
+        @extend .header__mode-switcher__mode-label;
+        color: var(--grey-color);
+      }
+
+      &--dark-mode {
+        @extend .header__mode-switcher__mode-label;
+        color: white;
+      }
     }
 
     &__switch-button {

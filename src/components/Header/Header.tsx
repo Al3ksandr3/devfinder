@@ -15,6 +15,11 @@ export default function Header() {
     "header__platform-name"
   );
 
+  const modeLabelClass = getClassBasedOnThemeModeContext(
+    themeModeContext,
+    "header__mode-switcher__mode-label"
+  );
+
   const { themeModeLabel, themeModeIconSource, themeModeAltText } =
     useReturnThemeModeRelatedInfo(themeModeContext);
 
@@ -32,7 +37,7 @@ export default function Header() {
     <header className="header">
       <h1 className={platformNameClass}>devfinder</h1>
       <span className="header__mode-switcher">
-        <p className="header__mode-switcher__mode-label">{themeModeLabel}</p>
+        <p className={modeLabelClass}>{themeModeLabel}</p>
         <img
           className="header__mode-switcher__switch-button"
           src={themeModeIconSource}

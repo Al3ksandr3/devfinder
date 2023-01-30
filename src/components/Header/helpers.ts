@@ -1,7 +1,7 @@
 import { ThemeModeContext } from "../../types/ThemeModeContext";
 
-import modeSwitchIconForLightMode from "./assets/icon-moon--light-mode.svg";
-import modeSwitchIconForDarkMode from "./assets/icon-sun--dark-mode.svg";
+import modeIconForLightMode from "./assets/mode-icon--light-mode.svg";
+import modeIconForDarkMode from "./assets/mode-icon--dark-mode.svg";
 
 import { getIconBasedOnThemeModeContext } from "../../helpers/helper-functions";
 
@@ -19,8 +19,8 @@ export function useReturnThemeModeRelatedInfo(
   let themeModeLabel: "Light" | "Dark";
   let themeModeIconSource: string = getIconBasedOnThemeModeContext(
     themeModeContext,
-    modeSwitchIconForLightMode,
-    modeSwitchIconForDarkMode
+    modeIconForLightMode,
+    modeIconForDarkMode
   );
   let themeModeAltText: string;
 

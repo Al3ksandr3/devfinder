@@ -34,12 +34,12 @@
 
       &--light-mode {
         @extend .header__mode-switcher__mode-label;
-        color: var(--grey-color);
+        color: var(--blue-grey-color);
       }
 
       &--dark-mode {
         @extend .header__mode-switcher__mode-label;
-        color: white;
+        color: var(--main-font-color-dark-mode);
       }
     }
 

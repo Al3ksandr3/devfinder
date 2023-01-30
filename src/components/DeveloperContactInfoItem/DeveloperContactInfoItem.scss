@@ -1,0 +1,48 @@
+.developer-contact-info-item {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.25rem;
+  padding-right: 1rem;
+
+  &--light-mode {
+    @extend .developer-contact-info-item;
+    color: var(--blue-grey-color);
+  }
+
+  &--dark-mode {
+    @extend .developer-contact-info-item;
+    color: var(--main-font-color-dark-mode);
+  }
+
+  &__icon {
+    margin-right: 1.5rem;
+    height: 50%;
+  }
+
+  &__link {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+
+    &--light-mode {
+      @extend .developer-contact-info-item__link;
+      color: var(--blue-grey-color);
+    }
+
+    &--dark-mode {
+      @extend .developer-contact-info-item__link;
+      color: var(--main-font-color-dark-mode);
+    }
+  }
+
+  &__item-content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

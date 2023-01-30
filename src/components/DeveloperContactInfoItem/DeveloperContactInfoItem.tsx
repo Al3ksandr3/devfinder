@@ -1,6 +1,9 @@
 import "./DeveloperContactInfoItem.scss";
 
-import { getIconBasedOnThemeModeContext } from "../../helpers/helper-functions";
+import {
+  getIconBasedOnThemeModeContext,
+  getClassBasedOnThemeModeContext,
+} from "../../helpers/helper-functions";
 
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
@@ -21,13 +24,26 @@ export default function DeveloperContactInfoItem(
     props.itemIconUrl.forDarkMode
   );
 
+  const contactInfoItemClass = getClassBasedOnThemeModeContext(
+    themeModeContext,
+    "developer-contact-info-item"
+  );
+
+  const linkClass = getClassBasedOnThemeModeContext(
+    themeModeContext,
+    "developer-contact-info-item__link"
+  );
+
   return (
-    <span className="developer-contact-info-item">
-      <img className="" src={contactInfoItemIcon} />
+    <span className={contactInfoItemClass}>
+      <img
+        className="developer-contact-info-item__icon"
+        src={contactInfoItemIcon}
+      />
 
       {props.isLink ? (
         <a
-          className="developer-contact-info-item__link"
+          className={linkClass}
           href={itemContent}
           target="_blank"
           rel="noreferrer"
@@ -35,7 +51,9 @@ export default function DeveloperContactInfoItem(
           {itemContent}
         </a>
       ) : (
-        <p className="developer-contact-info-item__item-name">{itemContent}</p>
+        <p className="developer-contact-info-item__item-content">
+          {itemContent}
+        </p>
       )}
     </span>
   );

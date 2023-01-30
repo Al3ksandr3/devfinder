@@ -36,15 +36,18 @@ export default function DeveloperCard(props: DeveloperCardProps) {
 
       {props.searchStatus === "empty" && <EmptySearchResult />}
 
-      {/* CASE III - display search result...  */}
+      {/* CASE III - display search result if user with specified name was found...  */}
 
       {props.searchStatus === "match" &&
         typeof props.githubUserInfo === "object" && (
-          <img
-            className="developer-card__avatar"
-            src={props.githubUserInfo.avatar}
-            alt="Avatar of a developer."
-          />
+          <section className="developer-card__developer-info">
+            <img
+              className="developer-card__developer-info__avatar"
+              src={props.githubUserInfo.avatar}
+              alt="Avatar of a developer."
+            />
+            <section className="developer-card__developer-info__info-container"></section>
+          </section>
         )}
     </section>
   );

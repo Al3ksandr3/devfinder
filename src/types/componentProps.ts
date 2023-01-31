@@ -13,3 +13,8 @@ export interface DeveloperContactInfoItemProps {
   isLink?: boolean;
   itemIconUrl: { forLightMode: string; forDarkMode: string };
 }
+
+export interface DeveloperStatsItemProps {
+  statName: string;
+  statValue: number;
+}

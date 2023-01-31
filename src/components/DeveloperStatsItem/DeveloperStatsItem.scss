@@ -1,0 +1,29 @@
+.developer-stats-item {
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  &__name {
+    color: var(--blue-grey-color);
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__value {
+    font-size: 3rem;
+    font-weight: bold;
+
+    &--light-mode {
+      @extend .developer-stats-item__value;
+      color: var(--main-font-color-light-mode);
+    }
+
+    &--dark-mode {
+      @extend .developer-stats-item__value;
+      color: var(--main-font-color-dark-mode);
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import {
   DeveloperContactInfoItemProps,
   DeveloperCardProps,
+  DeveloperStatsItemProps,
 } from "../../types/componentProps";
 
 import assetsDB from "./assetsDB";
@@ -41,5 +42,19 @@ export function getDeveloperContactInfoItems(
         forDarkMode: assetsDB.twitterIconDarkMode,
       },
     },
+  ];
+}
+
+////////////////////////////////////////////////////////
+
+export function getDeveloperStatsItems(
+  developerInfo: DeveloperCardProps["githubUserInfo"]
+): DeveloperStatsItemProps[] {
+  if (!developerInfo) return [];
+
+  return [
+    { statName: "Repos", statValue: developerInfo.repos },
+    { statName: "Followers", statValue: developerInfo.followers },
+    { statName: "Following", statValue: developerInfo.following },
   ];
 }

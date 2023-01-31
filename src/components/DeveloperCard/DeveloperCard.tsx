@@ -2,18 +2,24 @@ import "./DeveloperCard.scss";
 
 import StartupMessage from "../StartupMessage/StartupMessage";
 import EmptySearchResult from "../EmptySearchResult/EmptySearchResult";
+
 import DeveloperGeneralInfo from "../DeveloperGeneralInfo/DeveloperGeneralInfo";
 import DeveloperStatsItem from "../DeveloperStatsItem/DeveloperStatsItem";
 import DeveloperContactInfoItem from "../DeveloperContactInfoItem/DeveloperContactInfoItem";
 
 import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
-import { getDeveloperContactInfoItems } from "./helpers";
+
+import {
+  getDeveloperContactInfoItems,
+  getDeveloperStatsItems,
+} from "./helpers";
 
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 
 import {
   DeveloperCardProps,
   DeveloperContactInfoItemProps,
+  DeveloperStatsItemProps,
 } from "../../types/componentProps";
 
 //------ COMPONENT: START ------ //
@@ -26,8 +32,17 @@ export default function DeveloperCard(props: DeveloperCardProps) {
     "developer-card"
   );
 
+  const statsClass = getClassBasedOnThemeModeContext(
+    themeModeContext,
+    "developer-card__developer-info__info-container__stats"
+  );
+
   let developerContactInfoItems: DeveloperContactInfoItemProps[] =
     getDeveloperContactInfoItems(props.githubUserInfo);
+
+  let developerStatsItems: DeveloperStatsItemProps[] = getDeveloperStatsItems(
+    props.githubUserInfo
+  );
 
   return (
     <section className={developerCardClass}>
@@ -56,7 +71,17 @@ export default function DeveloperCard(props: DeveloperCardProps) {
                 name={props.githubUserInfo.name}
                 created={props.githubUserInfo.created}
               />
-              <span className="developer-card__developer-info__info-container__stats"></span>
+              <span className={statsClass}>
+                {developerStatsItems.map((statsItem) => {
+                  return (
+                    <DeveloperStatsItem
+                      key={statsItem.statName}
+                      statName={statsItem.statName}
+                      statValue={statsItem.statValue}
+                    />
+                  );
+                })}
+              </span>
               <span className="developer-card__developer-info__info-container__contacts">
                 {developerContactInfoItems.map((contactInfoItem) => {
                   return (

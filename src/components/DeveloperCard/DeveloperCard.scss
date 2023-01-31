@@ -44,14 +44,24 @@
       padding-left: 2rem;
 
       &__stats {
-        height: 35%;
+        height: 25%;
         width: 100%;
         border-radius: 1rem;
-        background-color: aqua;
+        padding: 2rem;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
+        &--light-mode {
+          @extend .developer-card__developer-info__info-container__stats;
+          background-color: var(--app-background-color-light-mode);
+        }
+
+        &--dark-mode {
+          @extend .developer-card__developer-info__info-container__stats;
+          background-color: var(--app-background-color-dark-mode);
+        }
       }
 
       &__contacts {

@@ -60,6 +60,7 @@ export default function DeveloperCard(props: DeveloperCardProps) {
                 {developerContactInfoItems.map((contactInfoItem) => {
                   return (
                     <DeveloperContactInfoItem
+                      key={contactInfoItem.itemIconUrl.forLightMode}
                       itemContent={contactInfoItem.itemContent}
                       isLink={contactInfoItem.isLink}
                       itemIconUrl={contactInfoItem.itemIconUrl}

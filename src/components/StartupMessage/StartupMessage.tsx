@@ -3,26 +3,18 @@ import "./StartupMessage.scss";
 import githubIconForLightMode from "./assets/github-icon--light-mode.svg";
 import githubIconForDarkMode from "./assets/github-icon--dark-mode.svg";
 
-import {
-  getIconBasedOnThemeModeContext,
-  getClassBasedOnThemeModeContext,
-} from "../../helpers/helper-functions";
-
-import { useThemeModeContext } from "../../hooks/useThemeModeContext";
+import { useGetCSSClassBasedOnThemeModeContext } from "../../hooks/useGetCSSClassBasedOnThemeMode";
+import { useGetIconBasedOnThemeMode } from "../../hooks/useGetIconBasedOnThemeMode";
 
 //------ COMPONENT: START ------ //
 
 export default function StartupMessage() {
-  const themeModeContext = useThemeModeContext();
-
-  const startupMessageIcon = getIconBasedOnThemeModeContext(
-    themeModeContext,
+  const startupMessageIcon = useGetIconBasedOnThemeMode(
     githubIconForLightMode,
     githubIconForDarkMode
   );
 
-  const messageTextClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const messageTextClass = useGetCSSClassBasedOnThemeModeContext(
     "startup-message__message-text"
   );
 

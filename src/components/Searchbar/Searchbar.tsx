@@ -2,10 +2,8 @@ import "./Searchbar.scss";
 
 import SearchIcon from "./assets/icon-search.svg";
 
-import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
-
 import { useState, useRef } from "react";
-import { useThemeModeContext } from "../../hooks/useThemeModeContext";
+import { useGetCSSClassBasedOnThemeModeContext } from "../../hooks/useGetCSSClassBasedOnThemeMode";
 
 import { SearchButtonClickHandler } from "../../types/SearchButtonClickHandler";
 
@@ -21,8 +19,6 @@ interface SearchbarProps {
 //------ COMPONENT: START ------ //
 
 export default function Searchbar(props: SearchbarProps) {
-  const themeModeContext = useThemeModeContext();
-
   const inputElementRef = useRef<null | HTMLInputElement>(null);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,13 +29,9 @@ export default function Searchbar(props: SearchbarProps) {
     setSearchQuery(event.target.value);
   };
 
-  const searchbarClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
-    "searchbar"
-  );
+  const searchbarClass = useGetCSSClassBasedOnThemeModeContext("searchbar");
 
-  const searchFieldClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const searchFieldClass = useGetCSSClassBasedOnThemeModeContext(
     "searchbar__search-field"
   );
 

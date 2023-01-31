@@ -1,6 +1,6 @@
 import "./Header.scss";
 
-import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
+import { useGetCSSClassBasedOnThemeModeContext } from "../../hooks/useGetCSSClassBasedOnThemeMode";
 
 import { useThemeModeContext } from "../../hooks/useThemeModeContext";
 import { useReturnThemeModeRelatedInfo } from "./helpers";
@@ -10,13 +10,11 @@ import { useReturnThemeModeRelatedInfo } from "./helpers";
 export default function Header() {
   const themeModeContext = useThemeModeContext();
 
-  const platformNameClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const platformNameClass = useGetCSSClassBasedOnThemeModeContext(
     "header__platform-name"
   );
 
-  const modeLabelClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const modeLabelClass = useGetCSSClassBasedOnThemeModeContext(
     "header__mode-switcher__mode-label"
   );
 

@@ -1,18 +1,13 @@
 import "./DeveloperStatsItem.scss";
 
-import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
-
-import { useThemeModeContext } from "../../hooks/useThemeModeContext";
+import { useGetCSSClassBasedOnThemeModeContext } from "../../hooks/useGetCSSClassBasedOnThemeMode";
 
 import { DeveloperStatsItemProps } from "../../types/componentProps";
 
 //------ COMPONENT: START ------ //
 
 export default function DeveloperStatsItem(props: DeveloperStatsItemProps) {
-  const themeModeContext = useThemeModeContext();
-
-  const statsItemValueClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const statsItemValueClass = useGetCSSClassBasedOnThemeModeContext(
     "developer-stats-item__value"
   );
 

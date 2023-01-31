@@ -1,8 +1,6 @@
 import "./DeveloperGeneralInfo.scss";
 
-import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
-
-import { useThemeModeContext } from "../../hooks/useThemeModeContext";
+import { useGetCSSClassBasedOnThemeModeContext } from "../../hooks/useGetCSSClassBasedOnThemeMode";
 
 import { DeveloperGeneralInfoProps } from "../../types/componentProps";
 
@@ -15,8 +13,6 @@ const transformDateTime = new Intl.DateTimeFormat("en-UK", {
 });
 
 export default function DeveloperGeneralInfo(props: DeveloperGeneralInfoProps) {
-  const themeModeContext = useThemeModeContext();
-
   const developerName: string = props.name || "Unknown name";
 
   const developerBio: string = props.bio || "This profile has no bio...";
@@ -25,8 +21,7 @@ export default function DeveloperGeneralInfo(props: DeveloperGeneralInfoProps) {
     new Date(props.created)
   );
 
-  const nameClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const nameClass = useGetCSSClassBasedOnThemeModeContext(
     "developer-general-info__name"
   );
 

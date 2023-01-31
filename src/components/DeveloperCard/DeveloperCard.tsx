@@ -7,14 +7,12 @@ import DeveloperGeneralInfo from "../DeveloperGeneralInfo/DeveloperGeneralInfo";
 import DeveloperStatsItem from "../DeveloperStatsItem/DeveloperStatsItem";
 import DeveloperContactInfoItem from "../DeveloperContactInfoItem/DeveloperContactInfoItem";
 
-import { getClassBasedOnThemeModeContext } from "../../helpers/helper-functions";
-
 import {
   getDeveloperContactInfoItems,
   getDeveloperStatsItems,
 } from "./helpers";
 
-import { useThemeModeContext } from "../../hooks/useThemeModeContext";
+import { useGetCSSClassBasedOnThemeModeContext } from "../../hooks/useGetCSSClassBasedOnThemeMode";
 
 import {
   DeveloperCardProps,
@@ -25,15 +23,10 @@ import {
 //------ COMPONENT: START ------ //
 
 export default function DeveloperCard(props: DeveloperCardProps) {
-  const themeModeContext = useThemeModeContext();
+  const developerCardClass =
+    useGetCSSClassBasedOnThemeModeContext("developer-card");
 
-  const developerCardClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
-    "developer-card"
-  );
-
-  const statsClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const statsClass = useGetCSSClassBasedOnThemeModeContext(
     "developer-card__developer-info__info-container__stats"
   );
 

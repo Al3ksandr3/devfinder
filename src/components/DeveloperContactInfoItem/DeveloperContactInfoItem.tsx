@@ -1,11 +1,7 @@
 import "./DeveloperContactInfoItem.scss";
 
-import {
-  getIconBasedOnThemeModeContext,
-  getClassBasedOnThemeModeContext,
-} from "../../helpers/helper-functions";
-
-import { useThemeModeContext } from "../../hooks/useThemeModeContext";
+import { useGetCSSClassBasedOnThemeModeContext } from "../../hooks/useGetCSSClassBasedOnThemeMode";
+import { useGetIconBasedOnThemeMode } from "../../hooks/useGetIconBasedOnThemeMode";
 
 import { DeveloperContactInfoItemProps } from "../../types/componentProps";
 
@@ -14,23 +10,18 @@ import { DeveloperContactInfoItemProps } from "../../types/componentProps";
 export default function DeveloperContactInfoItem(
   props: DeveloperContactInfoItemProps
 ) {
-  const themeModeContext = useThemeModeContext();
-
   const itemContent = props.itemContent || "Not available...";
 
-  const contactInfoItemIcon = getIconBasedOnThemeModeContext(
-    themeModeContext,
+  const contactInfoItemIcon = useGetIconBasedOnThemeMode(
     props.itemIconUrl.forLightMode,
     props.itemIconUrl.forDarkMode
   );
 
-  const contactInfoItemClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const contactInfoItemClass = useGetCSSClassBasedOnThemeModeContext(
     "developer-contact-info-item"
   );
 
-  const linkClass = getClassBasedOnThemeModeContext(
-    themeModeContext,
+  const linkClass = useGetCSSClassBasedOnThemeModeContext(
     "developer-contact-info-item__link"
   );
 

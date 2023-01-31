@@ -56,6 +56,7 @@ export default function DeveloperCard(props: DeveloperCardProps) {
                 name={props.githubUserInfo.name}
                 created={props.githubUserInfo.created}
               />
+              <span className="developer-card__developer-info__info-container__stats"></span>
               <span className="developer-card__developer-info__info-container__contacts">
                 {developerContactInfoItems.map((contactInfoItem) => {
                   return (
